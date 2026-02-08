@@ -1,70 +1,200 @@
-# Getting Started with Create React App
+# Frontend - Sistema de Gestión Documental
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Aplicación web React para el Sistema de Gestión Documental.
 
-## Available Scripts
+## 🚀 Deployment en Railway
 
-In the project directory, you can run:
+### Paso 1: Preparar el Repositorio
 
-### `npm start`
+1. Crear un repositorio Git separado para el frontend:
+```bash
+cd frontend
+git init
+git add .
+git commit -m "Initial frontend commit"
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+2. Subir a GitHub:
+```bash
+git remote add origin https://github.com/tu-usuario/sgd-frontend.git
+git push -u origin main
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Paso 2: Configurar Railway
 
-### `npm test`
+1. Ve a [Railway.app](https://railway.app)
+2. Crea un nuevo proyecto (o usa el mismo proyecto del backend)
+3. Haz clic en "+ New" → "GitHub Repo"
+4. Conecta tu repositorio del frontend
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Paso 3: Configurar Variables de Entorno
 
-### `npm run build`
+En Railway, ve a tu servicio frontend → Variables y agrega:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```env
+REACT_APP_API_URL=https://tu-backend.railway.app
+GENERATE_SOURCEMAP=false
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+**IMPORTANTE**: Reemplaza `https://tu-backend.railway.app` con la URL real de tu backend en Railway.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Paso 4: Deploy
 
-### `npm run eject`
+Railway desplegará automáticamente tu frontend. Obtendrás una URL como:
+```
+https://sgd-frontend-production.up.railway.app
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Paso 5: Actualizar CORS en el Backend
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Después de obtener la URL del frontend, actualiza la variable `CORS_ORIGIN` en el backend:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```env
+CORS_ORIGIN=https://tu-frontend.railway.app
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 📦 Instalación Local
 
-## Learn More
+```bash
+# Instalar dependencias
+npm install
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# Configurar variables de entorno
+cp .env.example .env
+# Editar .env con la URL de tu backend
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+# Iniciar en desarrollo
+npm start
 
-### Code Splitting
+# Construir para producción
+npm run build
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+# Servir build de producción localmente
+npm run serve
+```
 
-### Analyzing the Bundle Size
+## 🔧 Variables de Entorno
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+| Variable | Descripción | Ejemplo |
+|----------|-------------|---------|
+| PORT | Puerto del servidor de desarrollo | 3001 |
+| REACT_APP_API_URL | URL de la API del backend | https://backend.railway.app |
+| HOST | Host para desarrollo | 0.0.0.0 |
+| GENERATE_SOURCEMAP | Generar source maps | false |
 
-### Making a Progressive Web App
+## 🏗️ Estructura del Proyecto
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```
+frontend/
+├── public/              # Archivos estáticos
+│   ├── index.html
+│   ├── favicon.ico
+│   └── ...
+├── src/
+│   ├── components/      # Componentes React
+│   │   ├── Dashboard.js
+│   │   ├── Login.js
+│   │   ├── DocumentList.js
+│   │   └── ...
+│   ├── contexts/        # Context API
+│   │   └── AuthContext.js
+│   ├── hooks/           # Custom hooks
+│   │   └── useNotifications.js
+│   ├── theme/           # Tema de Material-UI
+│   │   └── theme.js
+│   ├── App.js           # Componente principal
+│   └── index.js         # Punto de entrada
+├── .env.example         # Ejemplo de variables de entorno
+├── .env.production      # Variables para producción
+├── package.json
+└── railway.json         # Configuración de Railway
+```
 
-### Advanced Configuration
+## 🎨 Tecnologías
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- **React** - Librería de UI
+- **Material-UI** - Componentes de UI
+- **React Router** - Enrutamiento
+- **Axios** - Cliente HTTP
+- **Monaco Editor** - Editor de código
+- **Context API** - Gestión de estado
 
-### Deployment
+## 🔐 Autenticación
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+El frontend usa JWT (JSON Web Tokens) para autenticación:
+- El token se almacena en `localStorage`
+- Se incluye en todas las peticiones a la API
+- Se verifica automáticamente al cargar la aplicación
 
-### `npm run build` fails to minify
+## 📱 Características
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- ✅ Login con roles (Admin, Editor, Asesor)
+- ✅ Dashboard con estadísticas
+- ✅ Gestión de documentos (CRUD)
+- ✅ Editor de documentos integrado
+- ✅ Apertura en editores externos
+- ✅ Sistema de notificaciones
+- ✅ Gestión de usuarios (Admin)
+- ✅ Gestión de categorías
+- ✅ Búsqueda y filtrado
+- ✅ Responsive design
+
+## 🐛 Troubleshooting
+
+### Error de CORS
+- Verifica que `REACT_APP_API_URL` apunte a tu backend
+- Asegúrate de que el backend tenga configurado CORS correctamente
+
+### Variables de entorno no se cargan
+- Las variables deben empezar con `REACT_APP_`
+- Reinicia el servidor de desarrollo después de cambiar `.env`
+- En Railway, configura las variables en el dashboard
+
+### Build falla
+- Verifica que todas las dependencias estén instaladas
+- Revisa los logs de Railway para errores específicos
+- Asegúrate de que `REACT_APP_API_URL` esté configurada
+
+### Página en blanco después del deploy
+- Verifica la consola del navegador (F12)
+- Asegúrate de que el backend esté accesible
+- Verifica que las rutas de React Router estén configuradas
+
+## 📝 Scripts Disponibles
+
+```bash
+# Desarrollo
+npm start              # Inicia servidor de desarrollo
+
+# Producción
+npm run build          # Construye para producción
+npm run serve          # Sirve el build localmente
+
+# Testing
+npm test               # Ejecuta tests
+npm run test:coverage  # Tests con cobertura
+```
+
+## 🌐 URLs de Acceso
+
+### Desarrollo
+- Frontend: http://localhost:3001
+- Backend API: http://localhost:5001/api
+
+### Producción (Railway)
+- Frontend: https://tu-frontend.railway.app
+- Backend API: https://tu-backend.railway.app/api
+
+## 👥 Usuarios de Prueba
+
+| Usuario | Contraseña | Rol |
+|---------|------------|-----|
+| admin | admin123 | Administrador |
+| editor | editor123 | Editor |
+| asesor | asesor123 | Asesor |
+
+## 📚 Documentación Adicional
+
+- [React Documentation](https://react.dev)
+- [Material-UI Documentation](https://mui.com)
+- [Railway Documentation](https://docs.railway.app)

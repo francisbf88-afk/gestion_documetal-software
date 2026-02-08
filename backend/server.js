@@ -16,8 +16,15 @@ const notificationRoutes = require('./routes/notifications');
 const app = express();
 const PORT = process.env.PORT || 5001;
 
+// Configuración de CORS para Railway
+const corsOptions = {
+    origin: process.env.CORS_ORIGIN || process.env.FRONTEND_URL || '*',
+    credentials: true,
+    optionsSuccessStatus: 200
+};
+
 // Middleware
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 
@@ -77,7 +84,9 @@ const startServer = async () => {
             console.log(`📊 Ambiente: ${process.env.NODE_ENV || 'development'}`);
             console.log(`🔗 API disponible en: http://${host}:${PORT}/api`);
             
-            if (process.env.NODE_ENV !== 'production') {
+            if (process.env.NODE_ENV === 'production') {
+                console.log(`🌐 Producción - CORS configurado para: ${process.env.CORS_ORIGIN || 'todos los orígenes'}`);
+            } else {
                 console.log(`🌐 Frontend disponible en: http://localhost:3000`);
                 console.log(`🌍 Acceso remoto: http://<IP_DEL_SERVIDOR>:${PORT}/api`);
             }
