@@ -1,0 +1,249 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║                                                                            ║
+║              🚀 DESPLIEGUE GRATUITO - SISTEMA DE GESTIÓN DOCUMENTAL       ║
+║                                                                            ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+📋 INICIO RÁPIDO (5 MINUTOS)
+═══════════════════════════════════════════════════════════════════════════
+
+1. Ejecuta el menú principal:
+   
+   Windows:
+   --------
+   Doble click en: INICIO_DESPLIEGUE.bat
+   
+   Linux/Mac:
+   ----------
+   chmod +x desplegar-render.sh
+   ./desplegar-render.sh
+
+
+2. Sigue las instrucciones en pantalla
+
+
+3. ¡Tu aplicación estará en línea!
+
+
+═══════════════════════════════════════════════════════════════════════════
+📚 ARCHIVOS IMPORTANTES
+═══════════════════════════════════════════════════════════════════════════
+
+SCRIPTS DE DESPLIEGUE:
+----------------------
+✓ INICIO_DESPLIEGUE.bat          - Menú interactivo (RECOMENDADO)
+✓ desplegar-render.bat            - Despliegue automático en Render
+✓ desplegar-railway.bat           - Despliegue automático en Railway
+✓ verificar-antes-desplegar.bat   - Verificar sistema
+
+DOCUMENTACIÓN:
+--------------
+✓ GUIA_DESPLIEGUE_GRATIS.md      - Guía completa paso a paso
+✓ DESPLIEGUE_RAPIDO.md           - Guía rápida de 5 minutos
+✓ ARCHIVOS_DESPLIEGUE.md         - Descripción de archivos
+
+UTILIDADES:
+-----------
+✓ generar-jwt-secret.js          - Generar secrets seguros
+✓ .env.production.example        - Variables de entorno
+
+
+═══════════════════════════════════════════════════════════════════════════
+🎯 OPCIONES DE DESPLIEGUE GRATUITO
+═══════════════════════════════════════════════════════════════════════════
+
+OPCIÓN 1: RENDER.COM (⭐ RECOMENDADO)
+-------------------------------------
+✅ Más fácil de usar
+✅ PostgreSQL gratis incluido
+✅ 750 horas gratis al mes
+✅ SSL/HTTPS automático
+✅ Despliegue con un solo archivo
+
+Comando: desplegar-render.bat
+
+
+OPCIÓN 2: RAILWAY.APP
+---------------------
+✅ $5 USD de crédito gratis al mes
+✅ PostgreSQL incluido
+✅ Despliegue muy rápido
+✅ CLI potente
+
+Comando: desplegar-railway.bat
+
+
+═══════════════════════════════════════════════════════════════════════════
+📝 PASOS RESUMIDOS
+═══════════════════════════════════════════════════════════════════════════
+
+PASO 1: Ejecutar Script
+------------------------
+Windows: INICIO_DESPLIEGUE.bat
+Linux:   ./desplegar-render.sh
+
+
+PASO 2: Crear Cuenta
+---------------------
+Render:  https://render.com
+Railway: https://railway.app
+
+
+PASO 3: Subir a GitHub
+-----------------------
+1. Crea un repositorio en: https://github.com/new
+2. Ejecuta (reemplaza TU-USUARIO):
+
+   git remote add origin https://github.com/TU-USUARIO/sgd.git
+   git branch -M main
+   git push -u origin main
+
+
+PASO 4: Desplegar
+------------------
+Render:
+1. Click "New +" → "Blueprint"
+2. Selecciona tu repositorio
+3. Click "Apply"
+
+Railway:
+1. Click "New Project"
+2. "Deploy from GitHub repo"
+3. Selecciona tu repositorio
+
+
+PASO 5: Ejecutar Migraciones
+-----------------------------
+En la plataforma, ve al backend → Shell:
+npm run migrate
+
+
+PASO 6: Actualizar URLs
+------------------------
+1. Copia URL del backend
+2. Ve al frontend → Environment
+3. Actualiza REACT_APP_API_URL
+4. Guarda cambios
+
+
+PASO 7: ¡Listo!
+----------------
+Abre la URL del frontend
+Login: admin / admin123
+
+
+═══════════════════════════════════════════════════════════════════════════
+🔧 REQUISITOS
+═══════════════════════════════════════════════════════════════════════════
+
+✓ Git instalado
+✓ Node.js instalado (opcional, solo para verificación local)
+✓ Cuenta de GitHub (gratis)
+✓ Cuenta en Render o Railway (gratis)
+
+
+═══════════════════════════════════════════════════════════════════════════
+⏱️ TIEMPO ESTIMADO
+═══════════════════════════════════════════════════════════════════════════
+
+Preparación:        2 minutos
+Subir a GitHub:     2 minutos
+Despliegue:         5-10 minutos
+Configuración:      2 minutos
+─────────────────────────────────
+TOTAL:              10-15 minutos
+
+
+═══════════════════════════════════════════════════════════════════════════
+💰 COSTO
+═══════════════════════════════════════════════════════════════════════════
+
+Render:   $0 USD (100% gratis)
+Railway:  $0 USD (100% gratis con $5 de crédito mensual)
+
+
+═══════════════════════════════════════════════════════════════════════════
+🆘 PROBLEMAS COMUNES
+═══════════════════════════════════════════════════════════════════════════
+
+Error: CORS
+-----------
+Solución: Agrega CORS_ORIGIN en backend con URL del frontend
+
+
+Error: Login falla
+------------------
+Solución: Ejecuta "npm run migrate" en el backend
+
+
+Error: Base de datos
+--------------------
+Solución: Verifica que DATABASE_URL esté configurada
+
+
+Error: Página en blanco
+-----------------------
+Solución: Verifica REACT_APP_API_URL en frontend
+
+
+═══════════════════════════════════════════════════════════════════════════
+📞 AYUDA Y SOPORTE
+═══════════════════════════════════════════════════════════════════════════
+
+Documentación completa:
+- GUIA_DESPLIEGUE_GRATIS.md
+
+Documentación oficial:
+- Render:   https://render.com/docs
+- Railway:  https://docs.railway.app
+
+Comunidad:
+- Render:   https://community.render.com
+- Railway:  https://discord.gg/railway
+
+
+═══════════════════════════════════════════════════════════════════════════
+✅ RESULTADO FINAL
+═══════════════════════════════════════════════════════════════════════════
+
+Después del despliegue tendrás:
+
+✅ Aplicación web accesible desde cualquier lugar
+✅ Base de datos PostgreSQL en la nube
+✅ SSL/HTTPS seguro automático
+✅ Dominio público gratuito
+✅ Despliegue automático desde GitHub
+✅ 100% GRATIS
+
+
+URLs de ejemplo:
+Frontend: https://sgd-frontend-abc123.onrender.com
+Backend:  https://sgd-backend-xyz789.onrender.com
+
+
+Credenciales:
+Usuario:     admin
+Contraseña:  admin123
+
+
+═══════════════════════════════════════════════════════════════════════════
+🎉 ¡ÉXITO!
+═══════════════════════════════════════════════════════════════════════════
+
+Tu Sistema de Gestión Documental está ahora:
+- En la nube ☁️
+- Accesible desde cualquier lugar 🌍
+- Con base de datos PostgreSQL 🗄️
+- Seguro con HTTPS 🔒
+- Completamente GRATIS 💰
+
+
+¡Disfruta tu aplicación en producción! 🚀
+
+
+═══════════════════════════════════════════════════════════════════════════
+
+Creado: 2024
+Versión: 1.0.0
+
+═══════════════════════════════════════════════════════════════════════════

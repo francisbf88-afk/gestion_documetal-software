@@ -46,3 +46,11 @@ coverage/
 .temp/
 *.bak
 *.tmp
+
+# Secrets temporales
+.jwt-secret-temp.txt
+*.secret
+
+# Archivos de despliegue locales
+railway.toml
+.railway/
